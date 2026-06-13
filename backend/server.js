@@ -85,7 +85,7 @@ app.post('/api/generate', async (req, res) => {
   // API key check
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey || apiKey === 'your_gemini_api_key_here') {
-    return res.status(500).json({ error: 'Gemini API key is not configured on the server.' });
+    return res.status(500).json({ error: 'GEMINI_API_KEY is not configured on the server.' });
   }
 
   try {
@@ -100,7 +100,7 @@ app.post('/api/generate', async (req, res) => {
 // ── Gemini API call ────────────────────────────────────────────
 // ▼▼▼ GEMINI CONFIGURATION — swap endpoint/model here if needed ▼▼▼
 const GEMINI_ENDPOINT =
-  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+  'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent';
 
 async function callGemini(apiKey, dayText) {
   const url = `${GEMINI_ENDPOINT}?key=${encodeURIComponent(apiKey)}`;

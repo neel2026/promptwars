@@ -69,8 +69,11 @@ export function useCookingList() {
 /** Map raw error messages to user-friendly strings */
 function classify(msg = '') {
   const m = msg.toLowerCase();
-  if (m.includes('api key') || m.includes('not configured'))
-    return 'The server API key is not configured. Add GEMINI_API_KEY to backend/.env and restart.';
+  // "not configured" = missing key; "invalid" = key exists but rejected by the API
+  if (m.includes('not configured'))
+    return 'No API key found on the server. Add GEMINI_API_KEY to backend/.env and restart.';
+  if (m.includes('invalid api key') || m.includes('invalid_api_key') || m.includes('authentication') || m.includes('unauthorized') || m.includes('401'))
+    return 'API key was rejected — it may be invalid or expired. Check your key in backend/.env.';
   if (m.includes('quota') || m.includes('rate') || m.includes('429') || m.includes('too many'))
     return 'Rate limit reached. Wait a moment and try again.';
   if (m.includes('json') || m.includes('unexpected') || m.includes('parse'))

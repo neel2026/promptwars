@@ -14,10 +14,10 @@ promptwars/
 
 ## Quick Start
 
-### 1. Add your Gemini API key
+### 1. Add your API key
 ```bash
 # backend/.env
-GEMINI_API_KEY=your_key_here
+GEMINI_API_KEY=your_gemini_key_here
 ```
 
 ### 2. Start backend
@@ -39,5 +39,5 @@ Open [http://localhost:5173](http://localhost:5173)
 ## Tech Stack
 - **Frontend**: React 18 + Vite 5
 - **Backend**: Node.js + Express — API key is server-side only
-- **AI**: Gemini 2.0 Flash via `POST /api/generate`
+- **AI**: Gemini 2.5 Flash-Lite via `POST /api/generate`
 - **Deploy**: Vercel (frontend + backend as one project)
