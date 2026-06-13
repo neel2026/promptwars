@@ -45,6 +45,7 @@ const allowedOrigins = [
   'http://localhost:5173',
   'http://localhost:4173',
   process.env.FRONTEND_URL,
+  process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null,
 ].filter(Boolean);
 
 app.use(cors({
